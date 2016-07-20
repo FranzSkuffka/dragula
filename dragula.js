@@ -306,6 +306,13 @@ function dragula (initialContainers, options) {
     if (item) {
       classes.rm(item, 'gu-transit');
     }
+
+    // Dirty quickfix, only compatible with vue-dragula.js
+    var parent = getParent(item);
+    if (parent && _copy != null) {
+      parent.removeChild(item);
+    }
+
     if (_renderTimer) {
       clearTimeout(_renderTimer);
     }
